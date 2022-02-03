@@ -1,3 +1,0 @@
-make coffee	false
-code rust	true
-study chemistry	true
