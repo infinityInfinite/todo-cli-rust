@@ -57,7 +57,7 @@ fn main() {
             Err(why) => println!("An error occurred: {}", why),
         }
     }else if action == "complete" {
-        match todo.complete(&   ){
+        match todo.complete(&item){
             None => println!("'{}' is not present in the list", item),
             Some(_) => match todo.save() {
                     Ok(_) => println!("todo saved"),
