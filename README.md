@@ -9,3 +9,5 @@ rust cli tool to make todo list
 # OPTIONS
 - add -> to add todo
 - complete -> to mark a todo as completed
+- delete -> to delete a single todo
+- clear -> to clear everything
