@@ -43,6 +43,17 @@ impl Todo {
             None => None
         }
     }
+
+    fn clear() -> std::io::Result<()> {
+        std::fs::write("db.txt","")?;
+        Ok(())
+    }
+    fn delete(&mut self, key:&String) -> bool{
+        match self.map.remove_entry(key){
+            Some(_) => true,
+            None => false
+        }
+    }
 }
 
 fn main() {
@@ -64,6 +75,19 @@ fn main() {
                     Err(why) => println!("An error occurred: {}", why)
             }
         
+        }
+    }else if action == "clear"{
+        match Todo::clear() {
+            Ok(_) => println!("todo saved"),
+            Err(why) => println!("An error occured {why}")
+        }
+    }else if action == "delete"{
+        match todo.delete(&item){
+            true => match todo.save() {
+                Ok(_) => println!("todo saved !!"),
+                Err(why) => println!("An error occured : {}",why)
+            },
+            false => println!("item not found !!")
         }
     }
 }
