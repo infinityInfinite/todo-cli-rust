@@ -54,6 +54,10 @@ impl Todo {
             None => false
         }
     }
+    fn display() {
+        let contents = std::fs::read_to_string("db.txt").expect("something went wrong !!");
+        println!("{contents}");
+    }
 }
 
 fn main() {
@@ -62,6 +66,7 @@ fn main() {
 
     let mut todo = Todo::new().expect("Initialization of db failed !");
     if action == "add" {
+
         todo.insert(item);
         match todo.save() {
             Ok(_) => println!("todo saved"),
@@ -89,5 +94,7 @@ fn main() {
             },
             false => println!("item not found !!")
         }
+    }else if action  == "display"{
+        Todo::display();
     }
 }
